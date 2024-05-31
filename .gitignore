@@ -2,7 +2,7 @@
 node_modules/
 npm-debug.log*
 .npmrc
-package-lock.json
+
 yarn.lock
 
 # Archivos de compilación
