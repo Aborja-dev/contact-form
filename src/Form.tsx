@@ -91,8 +91,8 @@ const Form = () => {
     <form onSubmit={submitHandler} className="grid">
       <FieldText label={'Nombre'} {...nombre} className='grid-1' />
       <FieldText label={'Apellido'} {...apellido} className='grid-1'/>
-      <FieldText label={'Email'} {...email} />
-      <RadioFieldGroup error={consulta.error} radios={[
+      <FieldText label={'Email'} {...email} className='grid-2' />
+      <RadioFieldGroup className='grid-2' error={consulta.error} radios={[
         {
             id: 'enquiry',
             label: 'Enquiry',
@@ -106,10 +106,9 @@ const Form = () => {
             onChange: () => consulta.changeHandler(2)
         }
       ]}/>
-      <FieldTextArea label={'Message'} {...mensaje} />
-      <CheckboxField label={'I agree with the terms and conditions'} {...agree} />
+      <FieldTextArea label={'Message'} {...mensaje}  className='grid-2' />
+      <CheckboxField className='grid-2' label={'I agree with the terms and conditions'} {...agree} />
       <button type="submit" disabled={submitted}>Submit</button>
-      <p>submitted: {submitted.toString()}</p>
     </form>
   )
 }

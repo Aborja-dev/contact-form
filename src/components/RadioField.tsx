@@ -1,10 +1,10 @@
 import React from 'react'
 import { IRadioFieldGroup } from '../types/field.d'
 
-const RadioFieldGroup: React.FC<IRadioFieldGroup> = ({error, radios}) => {
+const RadioFieldGroup: React.FC<IRadioFieldGroup & {className?: string}> = ({error, radios, className}) => {
   return (
     <>
-     <fieldset>
+     <fieldset className={className}>
         <legend>Query type</legend>
           {
             radios.map((field, index) => (
