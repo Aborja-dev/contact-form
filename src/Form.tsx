@@ -1,6 +1,6 @@
 import React from 'react'
 import FieldText from './components/FieldText'
-import { useField, useRadioField, useTextField } from './hook/useField'
+import { useField, useRadioField, useTextAreaField, useTextField } from './hook/useField'
 import RadioFieldGroup from './components/RadioField'
 import FieldTextArea from './components/TextArea'
 import CheckboxField from './components/Checkbox'
@@ -35,7 +35,7 @@ const Form = () => {
         validate: value => value !== 0
       }
     ]),
-    mensaje: useTextField('', [{
+    mensaje: useTextAreaField('', [{
       message: 'El mensaje no puede estar vacío',
       validate: value => value.length > 0
     }]),

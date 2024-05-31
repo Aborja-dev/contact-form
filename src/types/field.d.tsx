@@ -1,7 +1,7 @@
 export interface FormField {
     label: string
     error: string | null
-    changeHandler: (e: React.ChangeEvent<HTMLInputElement> |  React.FormEvent<HTMLTextAreaElement>) => void
+    changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
     value: string
 }
 

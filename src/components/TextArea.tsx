@@ -1,7 +1,14 @@
 import React from 'react'
-import { FormField } from '../types/field.d'
 
-const FieldTextArea: React.FC<FormField & {className?: string}> = ({label, error, changeHandler, value, className}) => {
+interface Props {
+  label: string
+  error: string | null
+  changeHandler: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+  value: string
+  className: string
+}
+
+const FieldTextArea: React.FC<Props> = ({label, error, changeHandler, value, className}) => {
   return (
     <fieldset className={`${className} ${error && 'error'}`}>
       <legend>{label}</legend>

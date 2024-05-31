@@ -1,6 +1,12 @@
 import React from 'react'
-
-const CheckboxField: React.FC = ({label, error, changeHandler, value, className}) => {
+interface Props {
+  label: string
+  error: string | null
+  changeHandler: (e: boolean) => void
+  value: boolean
+  className?: string
+}
+const CheckboxField: React.FC<Props> = ({label, error, changeHandler, value, className}) => {
   return (
     <>
     <fieldset className={className}>

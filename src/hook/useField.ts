@@ -18,10 +18,6 @@ interface TextField extends IUsefield<string>{
     changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-interface RadioField extends IUsefield<number>{
-    changeHandler: (v: number) => void
-}
-
 
 const validateFn = <T>(value: T, errors: FieldError<typeof value>[]): string | null => {
     const validateResult = errors
@@ -57,6 +53,30 @@ export const useField = <T>(
     return { value, setValue, changeHandler, validate, clear, error }
 }
 
+export const useBaseField = <T>(
+    initialValue: T,
+    errors: FieldError<T>[]
+) => {
+    const [value, setValue] = React.useState<T>(initialValue)
+    const [error, setError] = React.useState<string | null>(null)
+    const validate = (v: T) => {
+        const isValid = validateFn(v, errors) === null 
+        const errorMessage = validateFn(v, errors)
+        if (!isValid) {
+            setError(errorMessage)
+            setValue(initialValue)
+        } else {
+            setError(null)
+        }
+    }
+
+    const clear= () => {
+        setValue(initialValue)
+        setError(null)
+    }
+    return { value, setValue, validate, clear, error, setError }
+}
+
 export const useTextField = (
     initialValue: string,
     errors: FieldError<string>[]
@@ -84,6 +104,19 @@ export const useTextField = (
         setError(null)
     }
     return { value, setValue, changeHandler, validate, clear, error }
+}
+
+export const useTextAreaField = (
+    initialValue: string,
+    errors: FieldError<string>[]
+) => {
+    const {clear, error, setValue, validate, setError, value}  = useBaseField(initialValue, errors)
+    const changeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const value = e.target.value
+        setError(null)
+        setValue(value)
+    }
+    return {clear, error, setValue, validate, changeHandler, value}
 }
 
 export const useRadioField = (
