@@ -45,8 +45,7 @@ export const useField = <T>(
             setError(null)
         }
     }
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value as T
+    const changeHandler = (value: T) => {
         setError(null)
         setValue(value)
     }
