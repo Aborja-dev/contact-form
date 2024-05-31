@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CheckboxField = ({label, error, changeHandler, value}) => {
+const CheckboxField: React.FC = ({label, error, changeHandler, value}) => {
   return (
     <div>
         <legend><span>{label}</span></legend>

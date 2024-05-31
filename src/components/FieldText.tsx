@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormField } from '../types/field.d'
 
-const FieldText: React.FC<FormField> = ({label, error, changeHandler, value}) => {
+const FieldText: React.FC<FormField & {className?: string}> = ({label, error, changeHandler, value, className}) => {
   return (
     <div>
       <legend>{label}</legend>

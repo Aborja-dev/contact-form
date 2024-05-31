@@ -88,9 +88,9 @@ const Form = () => {
   }
 
   return (
-    <form onSubmit={submitHandler}>
-      <FieldText label={'Nombre'} {...nombre} />
-      <FieldText label={'Apellido'} {...apellido}/>
+    <form onSubmit={submitHandler} className="grid">
+      <FieldText label={'Nombre'} {...nombre} className='grid-1' />
+      <FieldText label={'Apellido'} {...apellido} className='grid-1'/>
       <FieldText label={'Email'} {...email} />
       <RadioFieldGroup error={consulta.error} radios={[
         {

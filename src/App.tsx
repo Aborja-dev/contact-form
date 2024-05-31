@@ -4,10 +4,12 @@ function App() {
 
   return (
     <>
-      <div>
-        <h1>Contact Form</h1>
-        <Form />
-      </div>
+      <main>
+        <article>
+          <h1>Contact Us</h1>
+          <Form />
+        </article>
+      </main>
     </>
   )
 }
