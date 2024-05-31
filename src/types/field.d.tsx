@@ -11,6 +11,7 @@ export interface FieldError <T>{
 }
 
 export interface IRadioFieldGroup {
+    label: string
     error: string | null
     radios: IRadioField[]
 }

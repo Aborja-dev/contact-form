@@ -92,7 +92,7 @@ const Form = () => {
       <FieldText label={'Nombre'} {...nombre} className='grid-1' />
       <FieldText label={'Apellido'} {...apellido} className='grid-1'/>
       <FieldText label={'Email'} {...email} className='grid-2' />
-      <RadioFieldGroup className='grid-2' error={consulta.error} radios={[
+      <RadioFieldGroup className='grid-2 flex' label={'Query Type'} error={consulta.error} radios={[
         {
             id: 'enquiry',
             label: 'Enquiry',

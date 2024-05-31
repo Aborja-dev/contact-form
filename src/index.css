@@ -65,6 +65,7 @@ input:focus, textarea:focus {
 
 fieldset legend::after {
   content: " *";
+  color: red;
 }
 
 fieldset legend {
@@ -121,6 +122,16 @@ fieldset.error small {
   gap: 5px;
 }
 
+small.error {
+  color: red;
+  text-align: left;
+}
+
+fieldset.error textarea {
+  border: 1px solid red;
+  font-family: Karla, sans-serif;
+}
+
 textarea {
   resize: none;
   border-radius: 5px;
@@ -143,4 +154,8 @@ button[type="submit"] {
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  filter: brightness(1.25);
 }
