@@ -107,8 +107,9 @@ const Form = () => {
         }
       ]}/>
       <FieldTextArea label={'Message'} {...mensaje}  className='grid-2' />
-      <CheckboxField className='grid-2' label={'I agree with the terms and conditions'} {...agree} />
-      <button type="submit" disabled={submitted}>Submit</button>
+      <CheckboxField className='grid-2 flex' label={'I agree with the terms and conditions'} {...agree} />
+      <button className='grid-2' type="submit" disabled={submitted}>Submit</button>
+      {submitted && <p>Submitted</p>}
     </form>
   )
 }
