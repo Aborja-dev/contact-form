@@ -11,8 +11,8 @@ interface Props {
 const FieldTextArea: React.FC<Props> = ({label, error, changeHandler, value, className}) => {
   return (
     <fieldset className={`${className} ${error && 'error'}`}>
-      <legend>{label}</legend>
-      <textarea value={value} onInput={changeHandler}></textarea>
+      <label htmlFor={label}>{label}</label>
+      <textarea value={value} id={label} onInput={changeHandler}></textarea>
       {error && <small>{error}</small>}
     </fieldset>
   )

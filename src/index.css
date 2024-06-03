@@ -17,16 +17,18 @@ body {
 * {
   box-sizing: border-box;
 }
+
 main {
   background-color: var(--green-200);
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 2rem;
   font-family: "Karla", sans-serif;
   font-size: 16px;
   line-height: 1.5;
   font-weight: 400;
 }
+
 
 
 
@@ -46,6 +48,21 @@ article {
   border-radius: 10px;
 }
 
+@media screen and (max-width: 768px) {
+  article {
+    padding: 1rem;
+    width: 80%;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  article {
+    width: 100%;
+  }
+
+}
+
 h1 {
   font-weight: 700;
   font-size: 1.5rem;
@@ -59,13 +76,20 @@ fieldset {
   border: 0;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
 }
 
-fieldset legend::after {
+fieldset label::after {
   content: " *";
   color: red;
+}
+
+
+fieldset label {
+  text-align: left;
+  padding-bottom: 10px;
 }
 
 fieldset legend {
@@ -73,12 +97,15 @@ fieldset legend {
   padding-bottom: 10px;
 }
 
+
 fieldset input[type="text"] {
   width: 100%;
   border-radius: 5px;
   border: 1px solid var(--grey-500);
   padding: 10px;
 }
+
+
 
 fieldset.error input[type="text"] {
   border: 1px solid red;
@@ -102,6 +129,12 @@ fieldset.error small {
   padding: 0;
 }
 
+@media screen and (max-width: 500px) {
+  .grid-1 {
+    grid-column-start: span 2;
+  }
+}
+
 .grid-2 {
   grid-column-start: span 2;
   padding: 0;
@@ -114,12 +147,28 @@ fieldset.error small {
 }
 
 .radio-field {
-  width: 50%;
+  width: 100%;
   border-radius: 5px;
   border: 1px solid var(--grey-500);
   padding: 10px;
   display: flex;
   gap: 5px;
+}
+
+.radio-field label{
+  padding: 0;
+}
+
+.flex.query {
+  width: 100%;
+}
+
+
+
+@media screen and (max-width: 500px) {
+  .flex.query {
+    flex-direction: column;
+  }
 }
 
 small.error {

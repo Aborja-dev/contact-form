@@ -4,6 +4,7 @@ import { useField, useRadioField, useTextAreaField, useTextField } from './hook/
 import RadioFieldGroup from './components/RadioField'
 import FieldTextArea from './components/TextArea'
 import CheckboxField from './components/Checkbox'
+import { ToastContainer, toast, Bounce } from 'react-toastify'
 
 const Form = () => {
   const fields = {
@@ -44,7 +45,7 @@ const Form = () => {
       validate: value => value !== false
     }])
   }
-  const {nombre, apellido, email, consulta, mensaje, agree } = fields
+  const { nombre, apellido, email, consulta, mensaje, agree } = fields
   const [submitted, setSubmitted] = React.useState(false)
   const isFilled = [
     nombre.value.length > 1,
@@ -57,60 +58,66 @@ const Form = () => {
   const allSuccess = Object.values(fields).every(field => field.error === null)
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(agree.value);
-    
     validateAll()
     if (isFilled && allSuccess) {
-        console.log({ 
-          nombre: nombre.value, 
-          apellido: apellido.value, 
-          email: email.value, 
-          consulta: consulta.value, 
-          mensaje: mensaje.value,
-          agree: agree.value
-        })
-        setSubmitted(true)
-        setTimeout(() => clearForm(), 3000)
+      setSubmitted(true)
+      sendForm()
+      clearForm()
     }
     else return
+  }
+  const sendForm = () => {
+    toast.success('Mensaje enviado', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
   }
   const clearForm = () => {
     Object.values(fields).forEach(field => field.clear())
     setSubmitted(false)
   }
   const validateAll = () => {
-   nombre.validate(nombre.value)
-   apellido.validate(apellido.value)
-   email.validate(email.value)
-   consulta.validate(consulta.value)
-   mensaje.validate(mensaje.value)
-   agree.validate(agree.value)
+    nombre.validate(nombre.value)
+    apellido.validate(apellido.value)
+    email.validate(email.value)
+    consulta.validate(consulta.value)
+    mensaje.validate(mensaje.value)
+    agree.validate(agree.value)
   }
 
   return (
-    <form onSubmit={submitHandler} className="grid">
-      <FieldText label={'Nombre'} {...nombre} className='grid-1' />
-      <FieldText label={'Apellido'} {...apellido} className='grid-1'/>
-      <FieldText label={'Email'} {...email} className='grid-2' />
-      <RadioFieldGroup className='grid-2 flex' label={'Query Type'} error={consulta.error} radios={[
-        {
+    <>
+      <form onSubmit={submitHandler} className="grid">
+        <FieldText label={'Nombre'} {...nombre} className='grid-1' />
+        <FieldText label={'Apellido'} {...apellido} className='grid-1' />
+        <FieldText label={'Email'} {...email} className='grid-2' />
+        <RadioFieldGroup className='grid-2 flex' label={'Query Type'} error={consulta.error} radios={[
+          {
             id: 'enquiry',
             label: 'Enquiry',
             value: consulta.value,
             onChange: () => consulta.changeHandler(1)
-        },
-        {
+          },
+          {
             id: 'request',
             label: 'Request',
             value: consulta.value,
             onChange: () => consulta.changeHandler(2)
-        }
-      ]}/>
-      <FieldTextArea label={'Message'} {...mensaje}  className='grid-2' />
-      <CheckboxField className='grid-2 flex' label={'I agree with the terms and conditions'} {...agree} />
-      <button className='grid-2' type="submit" disabled={submitted}>Submit</button>
-      {submitted && <p>Submitted</p>}
-    </form>
+          }
+        ]} />
+        <FieldTextArea label={'Message'} {...mensaje} className='grid-2' />
+        <CheckboxField className='grid-2 flex' label={'I agree with the terms and conditions'} {...agree} />
+        <button className='grid-2' type="submit" disabled={submitted}>Submit</button>
+        {submitted && <p>Submitted</p>}
+      </form>
+    </>
   )
 }
 

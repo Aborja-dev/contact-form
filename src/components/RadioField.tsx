@@ -7,8 +7,6 @@ const RadioFieldGroup: React.FC<IRadioFieldGroup & {className?: string}> = ({lab
      <fieldset className={`${className} ${error && 'error'}`}>
         <legend>{label}</legend>
         <div className='flex query'>
-
-        </div>
           {
             radios.map((field, index) => (
               <div key={index} className={'radio-field'}>
@@ -17,6 +15,7 @@ const RadioFieldGroup: React.FC<IRadioFieldGroup & {className?: string}> = ({lab
               </div>
             ))
           }
+        </div>
       </fieldset>
           {error && <small className='error'>{error}</small>} 
     </>
